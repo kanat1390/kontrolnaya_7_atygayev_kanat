@@ -6,4 +6,4 @@ class RecordManager(models.Manager):
         return super().get_queryset()
     
     def active(self):
-        return self.set_queryset().filter(status='active')
+        return self.set_queryset().filter(status='active').order_by('-created_at')

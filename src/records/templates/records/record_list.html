@@ -5,14 +5,32 @@
 {% endblock title %}
 
 {% block page_title %}
-<h1 class="text-center">Гостевая книга</h1>
+<h1 class="text-center">Гостевая книга
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+        aria-controls="collapseExample">
+        + Добавить
+    </a>
+</h1>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body mb-3">
+        <h3 class="text-center mb-3">Добавление новой записи</h3>
+        {% include "records/partial/record_form.html" with btn_name="Создать" %}
+    </div>
+</div>
 {% endblock page_title %}
 
 {% block content %}
 {% for record in record_list %}
-<div class="card mt-3" style="width: 100%;">
+<div class="card mb-3" style="width: 100%;">
     <div class="card-body">
-        <h5 class="card-title">{{record.author}}({{ record.email }})</h5>
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">{{record.author}}({{ record.email }})</h5>
+            <div class="d-flex gap-2">
+                <a href="{% url 'record-update' record.pk %}"><i class="fa-solid fa-pen-to-square"
+                        style="color:black;"></i></a>
+                <a href="{% url 'record-delete' record.pk %}"><i class="fa-solid fa-trash" style="color:red;"></i></a>
+            </div>
+        </div>
         <p class="card-text">{{ record.body }}.</p>
     </div>
 </div>
