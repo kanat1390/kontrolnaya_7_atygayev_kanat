@@ -13,7 +13,7 @@ class Record(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
     status = models.CharField(choices=STATUS_CHOICES, max_length=7, default=STATUS_CHOICES[0][0])
 
-    def ___str__(self):
+    def __str__(self):
         return f'{self.name}-{self.created_at}'
 
 
