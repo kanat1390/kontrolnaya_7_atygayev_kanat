@@ -6,6 +6,7 @@
 
 {% block content %}
 <h3 class="text-center mb-3">Редактирование записи</h3>
-{% include "records/partial/record_form.html" with btn_name="Обновить" %}
+{% url 'record-update' as url%}
+{% include "records/partial/record_form.html" with btn_name="Обновить" url=url%}
 
 {% endblock content %}

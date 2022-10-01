@@ -4,8 +4,6 @@ from .forms import RecordModelForm
 from django.http import HttpResponse
 
 def record_list_view(request):
-    if request.method == "POST":
-        record_create_view(request)
     form = RecordModelForm()
     record_list = record_services.get_records()
     context = {
@@ -15,10 +13,13 @@ def record_list_view(request):
     return render(request, 'records/record_list.html', context)
 
 def record_create_view(request):
-    form = RecordModelForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('record-list')
+    if request.method == "POST":
+        form = RecordModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('record-list')
+    else:
+        return HttpResponse('"GET" request is not allowed')
     
 def record_update_view(request, pk):
     record = record_services.get_record_by_pk(pk)
@@ -43,5 +44,5 @@ def record_delete_confirm_view(request, pk):
         record = record_services.get_record_by_pk(pk)
         record.delete()
         return redirect('record-list')
-    return HttpResponse('"GET request is not allowed"')
+    return HttpResponse('"GET" request is not allowed')
 

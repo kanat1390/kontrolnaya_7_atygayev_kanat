@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block page_title %}
-<h1 class="text-center">Гостевая книга
+<h1 class="text-center mt-3">Гостевая книга
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
         aria-controls="collapseExample">
         + Добавить
@@ -14,7 +14,8 @@
 <div class="collapse" id="collapseExample">
     <div class="card card-body mb-3">
         <h3 class="text-center mb-3">Добавление новой записи</h3>
-        {% include "records/partial/record_form.html" with btn_name="Создать" %}
+        {% url 'record-create' as url%}
+        {% include "records/partial/record_form.html" with btn_name="Создать" url=url%}
     </div>
 </div>
 {% endblock page_title %}
