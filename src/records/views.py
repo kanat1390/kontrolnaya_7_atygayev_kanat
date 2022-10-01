@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from .services import record_services
 from .forms import RecordModelForm
 from django.http import HttpResponse
+from django.urls import reverse
 
 def record_list_view(request):
     form = RecordModelForm()
     record_list = record_services.get_records()
+    if 'author' in request.GET:
+        author = request.GET.get('author')
+        record_list = record_services.search_records_by_author(author)
+        print(record_list)
     context = {
         'record_list': record_list,
         'form': form,
@@ -45,4 +50,7 @@ def record_delete_confirm_view(request, pk):
         record.delete()
         return redirect('record-list')
     return HttpResponse('"GET" request is not allowed')
+
+
+
 

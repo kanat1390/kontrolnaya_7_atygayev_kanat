@@ -19,6 +19,6 @@ class Record(models.Model):
     objects = RecordManager()
 
     def __str__(self):
-        return f'{self.name}-{self.created_at}'
+        return f'{self.author}-{self.created_at}'
 
 

@@ -4,6 +4,17 @@
 Гостевая книга
 {% endblock title %}
 
+{% block search %}
+<div class="container" style="width:600px;">
+    <form action="" method="GET">
+        <div class="d-flex gap-3">
+            <input type="text" class="form-control" placeholder="Введите имя автора" name="author">
+            <button type="submit" class="btn btn-primary">Искать</button>
+        </div>
+    </form>
+</div>
+{% endblock search %}
+
 {% block page_title %}
 <h1 class="text-center mt-3">Гостевая книга
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
