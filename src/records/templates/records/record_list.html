@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Гостевая книга
+{% endblock title %}
+
+{% block page_title %}
+<h1 class="text-center">Гостевая книга</h1>
+{% endblock page_title %}
+
+{% block content %}
+{% for record in record_list %}
+<div class="card mt-3" style="width: 100%;">
+    <div class="card-body">
+        <h5 class="card-title">{{record.author}}({{ record.email }})</h5>
+        <p class="card-text">{{ record.body }}.</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

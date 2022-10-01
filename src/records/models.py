@@ -10,7 +10,7 @@ STATUS_CHOICES = (
 
 
 class Record(models.Model):
-    name = models.CharField(null=False, blank=False, max_length=100)
+    author = models.CharField(null=False, blank=False, max_length=100)
     email = models.EmailField(null=False, blank=False, max_length=100)
     body = models.TextField(null=False, blank=False, max_length=2000)
     created_at = models.DateTimeField(auto_now_add=True)
